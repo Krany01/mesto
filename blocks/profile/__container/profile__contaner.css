@@ -1,0 +1,11 @@
+ .profile__container {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+ 
+ @media (min-width: 320px) and (max-width: 425px) {
+     .profile__container {
+         margin-top: 26px;
+     }
+ }

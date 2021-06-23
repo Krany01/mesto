@@ -1,0 +1,36 @@
+.profile__subtitle {
+    max-width: 400px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    margin: 0;
+    margin-top: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: 'Inter';
+}
+
+@media (min-width: 320px) and (max-width: 425px) {
+    .profile__subtitle {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 767px) {
+    .profile__subtitle {
+        margin-top: 0;
+        max-width: 250px;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 425px) {
+    .profile__subtitle {
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        margin-top: 14px;
+    }
+}
