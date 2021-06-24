@@ -19,58 +19,58 @@
                 <div class="profile-subcontainer">
                     <div class="profile__container">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button" type="button"></button>
+                        <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
                     </div>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
             </div>
             <button class="profile__add-button" type="button"></button>
         </section>
-        <section class="elements">
-            <ul class="elements__info">
-                <li class="elements__container">
-                    <img src="./images/Karachaevsk.jpg" alt="Карачаевск" class="elements__image">
-                    <h2 class="elements__title">Карачаевск</h2>
-                    <button class="elements__button elements__button_like" type="button"></button>
+        <section class="cards">
+            <ul class="cards__info">
+                <li class="cards__card">
+                    <img src="./images/Karachaevsk.jpg" alt="Карачаевск" class="cards__image">
+                    <h2 class="cards__title">Карачаевск</h2>
+                    <button class="cards__button cards__button_like" type="button"></button>
                 </li>
-                <li class="elements__container">
-                    <img src="./images/Elbrus.jpg" alt="Гора Эльбрус" class="elements__image">
-                    <h2 class="elements__title">Гора Эльбрус</h2>
-                    <button class="elements__button elements__button_like" type="button"></button>
+                <li class="cards__card">
+                    <img src="./images/Elbrus.jpg" alt="Гора Эльбрус" class="cards__image">
+                    <h2 class="cards__title">Гора Эльбрус</h2>
+                    <button class="cards__button cards__button_like" type="button"></button>
                 </li>
-                <li class="elements__container">
-                    <img src="./images/NSO.jpg" alt="Новосибирская область" class="elements__image">
-                    <h2 class="elements__title">Новосибирская область</h2>
-                    <button class="elements__button elements__button_like" type="button"></button>
+                <li class="cards__card">
+                    <img src="./images/NSO.jpg" alt="Новосибирская область" class="cards__image">
+                    <h2 class="cards__title">Новосибирская область</h2>
+                    <button class="cards__button cards__button_like" type="button"></button>
                 </li>
-                <li class="elements__container">
-                    <img src="./images/Karachaevsk.jpg" alt="Карачаевск" class="elements__image">
-                    <h2 class="elements__title">Карачаевск</h2>
-                    <button class="elements__button elements__button_like" type="button"></button>
+                <li class="cards__card">
+                    <img src="./images/Karachaevsk.jpg" alt="Карачаевск" class="cards__image">
+                    <h2 class="cards__title">Карачаевск</h2>
+                    <button class="cards__button cards__button_like" type="button"></button>
                 </li>
-                <li class="elements__container">
-                    <img src="./images/Elbrus.jpg" alt="Гора Эльбрус" class="elements__image">
-                    <h2 class="elements__title">Гора Эльбрус</h2>
-                    <button class="elements__button elements__button_like" type="button"></button>
+                <li class="cards__card">
+                    <img src="./images/Elbrus.jpg" alt="Гора Эльбрус" class="cards__image">
+                    <h2 class="cards__title">Гора Эльбрус</h2>
+                    <button class="cards__button cards__button_like" type="button"></button>
                 </li>
-                <li class="elements__container">
-                    <img src="./images/NSO.jpg" alt="Новосибирская область" class="elements__image">
-                    <h2 class="elements__title">Новосибирская область</h2>
-                    <button class="elements__button elements__button_like" type="button"></button>
+                <li class="cards__card">
+                    <img src="./images/NSO.jpg" alt="Новосибирская область" class="cards__image">
+                    <h2 class="cards__title">Новосибирская область</h2>
+                    <button class="cards__button cards__button_like" type="button"></button>
                 </li>
             </ul>
         </section>
-        <div class="popup">
+        <article class="popup">
             <div class="popup__container">
                 <button class="popup__button popup__button_close" type="button"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form class="popup__form" name="form-popup">
-                    <input class="popup__info popup__info_name" type="text" placeholder="Имя" name="name">
-                    <input class="popup__info popup__info_aboutyourself" type="text" placeholder="О себе" name="about">
-                    <button class="popup__button popup__button_submit" type="submit">Сохранить</button>
+                    <input class="popup__info popup__info_type_name" type="text" placeholder="Имя" name="name">
+                    <input class="popup__info popup__info_type_about-your-self" type="text" placeholder="О себе" name="about">
+                    <button class="popup__button popup__button_submit" type="submit" aria-label="Сохранить">Сохранить</button>
                 </form>
             </div>
-        </div>
+        </article>
     </main>
     <footer class="footer">
         <p class="footer__title">&copy; 2021 Mesto Russia</p>

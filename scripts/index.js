@@ -6,29 +6,29 @@ let popupClose = popup.querySelector('.popup__button_close');
 let popupForm = popup.querySelector('.popup__form');
 let profileName = profile.querySelector('.profile__title');
 let profileSubtitle = profile.querySelector('.profile__subtitle');
-let inputInfoName = popupForm.querySelector('.popup__info_name');
-let inputInfoAboutyourself = popupForm.querySelector('.popup__info_aboutyourself');
+let inputInfoName = popupForm.querySelector('.popup__info_type_name');
+let inputInfoAboutyourself = popupForm.querySelector('.popup__info_type_about-your-self');
 
 /*Popup-открытие*/
-function PopupOpened() {
-    popup.classList.add('popup_opened');
+function popupOpened() {
     inputInfoName.value = profileName.textContent;
     inputInfoAboutyourself.value = profileSubtitle.textContent;
+    popup.classList.add('popup_opened');
 }
 
 /*Popup-закрытие*/
-function PopupClosed() {
+function popupClosed() {
     popup.classList.remove('popup_opened');
 }
 
 /*Popup-редактор*/
-function PopupEditor(evt) {
+function popupEditor(evt) {
     evt.preventDefault();
     profileName.textContent = inputInfoName.value;
     profileSubtitle.textContent = inputInfoAboutyourself.value;
-    PopupClosed();
+    popupClosed();
 }
 
-popupEditbutton.addEventListener('click', PopupOpened);
-popupClose.addEventListener('click', PopupClosed);
-popupForm.addEventListener('submit', PopupEditor);
+popupEditbutton.addEventListener('click', popupOpened);
+popupClose.addEventListener('click', popupClosed);
+popupForm.addEventListener('submit', popupEditor);

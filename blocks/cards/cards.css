@@ -1,4 +1,4 @@
-.elements {
+.cards {
     max-width: 880px;
     margin-right: auto;
     margin-bottom: 0;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-    .elements {
+    .cards {
         max-width: 605px;
         padding-top: 0;
         padding-right: 19px;
@@ -17,7 +17,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    .elements {
+    .cards {
         max-width: 282px;
     }
 }

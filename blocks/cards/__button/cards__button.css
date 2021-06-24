@@ -1,8 +1,8 @@
-.elements__button {
+.cards__button {
     border: none;
 }
 
-.elements__button:hover {
+.cards__button:hover {
     opacity: .5;
     cursor: pointer;
 }
