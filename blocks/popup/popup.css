@@ -11,9 +11,6 @@
     top: 0;
     left: 0;
     visibility: hidden;
-    /*opacity: 0;
-    transition: opacity .5s visibility .5s;
-    /*Если ставлю opacity:0 - то картинка в фулскрине не открывается вообще
-     и приходится обновлять страницу, ничего не понимаю :(
-    и вообще как-то заторможенно всё начинает происходить с transition, вроде и свйоства менял, не понимаю как лучше*/
+    opacity: 0;
+    transition: opacity .5s, visibility .5s;
 }

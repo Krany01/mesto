@@ -1,14 +1,13 @@
-let content = document.querySelector('.content');
-let profile = content.querySelector('.profile');
-let popupEditbutton = profile.querySelector('.profile__edit-button');
-let popup = document.querySelector('.popup');
-let popupClose = popup.querySelector('.popup__button_close');
-let popupForm = popup.querySelector('.popup__form');
-let profileName = profile.querySelector('.profile__title');
-let profileSubtitle = profile.querySelector('.profile__subtitle');
-let inputInfoName = popupForm.querySelector('.popup__info_type_name');
-let inputInfoAboutyourself = popupForm.querySelector('.popup__info_type_about-your-self');
-
+const content = document.querySelector('.content');
+const profile = content.querySelector('.profile');
+const popupEditbutton = profile.querySelector('.profile__edit-button');
+const popupPrimal = document.querySelector('.popup');
+const popupClose = popupPrimal.querySelector('.popup__button_close');
+const popupProfileForm = popupPrimal.querySelector('.popup__form');
+const profileName = profile.querySelector('.profile__title');
+const profileSubtitle = profile.querySelector('.profile__subtitle');
+const inputInfoName = popupProfileForm.querySelector('.popup__info_type_name');
+const inputInfoAboutyourself = popupProfileForm.querySelector('.popup__info_type_about-your-self');
 const popupAdd = document.querySelector('.popup-add');
 const formAdd = document.querySelector('.popup__form_type_add');
 const popupAddButton = document.querySelector('.profile__add-button');
@@ -57,8 +56,8 @@ function addEventListeners(element) {
 }
 
 /*cards*/
-const tooglePopup = function(popup) {
-    popup.classList.toggle('popup_opened');
+const tooglePopup = function(popupPrimal) {
+    popupPrimal.classList.toggle('popup_opened');
 }
 
 /* функции фулскрин*/
@@ -115,7 +114,7 @@ function editInfoTitleUrl(event) {
 
 /*Popup-открытие*/
 function openProfile() {
-    tooglePopup(popup);
+    tooglePopup(popupPrimal);
     inputInfoName.value = profileName.textContent;
     inputInfoAboutyourself.value = profileSubtitle.textContent;
 }
@@ -124,12 +123,12 @@ function popupEditor(evt) {
     evt.preventDefault();
     profileName.textContent = inputInfoName.value;
     profileSubtitle.textContent = inputInfoAboutyourself.value;
-    tooglePopup(popup);
+    tooglePopup(popupPrimal);
 }
 
 popupEditbutton.addEventListener('click', openProfile);
-popupClose.addEventListener('click', () => tooglePopup(popup));
-popupForm.addEventListener('submit', popupEditor);
+popupClose.addEventListener('click', () => tooglePopup(popupPrimal));
+popupProfileForm.addEventListener('submit', popupEditor);
 
 popupAddButton.addEventListener('click', openAddCard);
 popupCloseButton.addEventListener('click', () => tooglePopup(popupAdd));
