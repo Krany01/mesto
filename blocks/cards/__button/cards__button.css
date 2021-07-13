@@ -1,5 +1,7 @@
 .cards__button {
     border: none;
+    box-sizing: border-box;
+    transition: opacity .7s ease;
 }
 
 .cards__button:hover {
