@@ -1,13 +1,15 @@
 const content = document.querySelector('.content');
 const profile = content.querySelector('.profile');
 const popupEditbutton = profile.querySelector('.profile__edit-button');
-const popupPrimal = document.querySelector('.popup_type_profile');
-const popupClose = popupPrimal.querySelector('.popup__button_close');
-const popupProfileForm = popupPrimal.querySelector('.popup__form');
+const popupList = document.querySelectorAll('.popup');
+const popupElementEdit = document.querySelector('.popup_type_profile');
+const popupEditClose = popupElementEdit.querySelector('.popup__button_close-edit');
+const popupProfileForm = popupElementEdit.querySelector('.popup__form');
 const profileName = profile.querySelector('.profile__title');
 const profileSubtitle = profile.querySelector('.profile__subtitle');
 const inputInfoName = popupProfileForm.querySelector('.popup__info_type_name');
 const inputInfoAboutyourself = popupProfileForm.querySelector('.popup__info_type_about-your-self');
+
 const popupAdd = document.querySelector('.popup-add');
 const formAdd = document.querySelector('.popup__form_type_add');
 const popupAddButton = document.querySelector('.profile__add-button');
@@ -55,19 +57,6 @@ function addEventListeners(element) {
     element.querySelector('.cards__image').addEventListener('click', openFullscreen);
 }
 
-/*cards*/
-const tooglePopup = function(popupPrimal) {
-    popupPrimal.classList.toggle('popup_opened');
-}
-
-/* функции фулскрин*/
-function openFullscreen(evt) {
-    const element = evt.target.closest('.cards__image');
-    fullscreenImage.src = element.src;
-    fullscreenText.textContent = element.alt;
-    tooglePopup(popupFullscreen);
-}
-
 function createCard(formAdd) {
     const element = templateCards.content.cloneNode(true);
     const elementTitle = element.querySelector('.cards__title');
@@ -96,41 +85,104 @@ function likeCard(evt) {
     evt.target.classList.toggle('cards__button_like-active');
 }
 
-function openAddCard() {
-    tooglePopup(popupAdd);
-    infoTitle.value = '';
-    infoTypeUrl.value = '';
-}
-
 function editInfoTitleUrl(event) {
     event.preventDefault();
     const element = createCard({
         name: infoTitle.value,
         link: infoTypeUrl.value,
     });
-    tooglePopup(popupAdd);
+    closepopupAdd(popupAdd);
     placementCard(element);
 }
 
-/*Popup-открытие*/
-function openProfile() {
-    tooglePopup(popupPrimal);
+function handlerEscKey(evt) {
+    const popupOpened = document.querySelector('.popup_opened');
+    if (evt.key === 'Escape' || evt.key === 'Esc') {
+        closePopup(popupOpened);
+    }
+}
+
+popupList.forEach(popup => {
+    popup.addEventListener('keydown', handlerEscKey)
+})
+
+/*Закрытие popup при клике на пустое место*/
+function handlerEvent(evt) {
+    if (evt.target.classList.contains('popup')) {
+        closePopup(evt.target);
+    }
+}
+/*Ф-я открытия popup*/
+function openPopup(element) {
+    element.classList.add('popup_opened');
+    element.addEventListener('click', handlerEvent);
+    document.addEventListener('keydown', handlerEscKey);
+}
+
+/*Ф-я закрытия popup*/
+function closePopup(element) {
+    element.classList.remove('popup_opened');
+    element.removeEventListener('click', handlerEvent);
+    document.removeEventListener('keydown', handlerEscKey);
+    setDefaultErrorState(element, validationSettings);
+}
+
+/*Ф-и упрощения*/
+function initializeProfileInfo() {
     inputInfoName.value = profileName.textContent;
     inputInfoAboutyourself.value = profileSubtitle.textContent;
 }
-/*Popup-редактор*/
-function popupEditor(evt) {
+
+function emptyInputValue(element) {
+    const inputs = Array.from(element.querySelectorAll('.popup__info'));
+    inputs.forEach(elem => {
+        elem.value = '';
+    })
+}
+
+/*Ф-и открытия и закрытия с проверкой валидности*/
+function openProfilePopup() {
+    initializeProfileInfo()
+    openPopup(popupElementEdit);
+}
+
+function openpopupAdd() {
+    emptyInputValue(formAdd);
+    openPopup(popupAdd);
+}
+
+function openFullscreen(evt) {
+    const element = evt.target.closest('.cards__image');
+    fullscreenImage.src = element.src;
+    fullscreenText.textContent = element.alt;
+    openPopup(popupFullscreen);
+}
+
+function closeProfilePopup() {
+    closePopup(popupElementEdit);
+}
+
+function closepopupAdd() {
+    closePopup(popupAdd);
+}
+
+function closeFullscreen() {
+    closePopup(popupFullscreen);
+}
+
+/*Ф-я редактирования данных профиля*/
+function editNameAbout(evt) {
     evt.preventDefault();
     profileName.textContent = inputInfoName.value;
     profileSubtitle.textContent = inputInfoAboutyourself.value;
-    tooglePopup(popupPrimal);
+    closeProfilePopup();
 }
 
-popupEditbutton.addEventListener('click', openProfile);
-popupClose.addEventListener('click', () => tooglePopup(popupPrimal));
-popupProfileForm.addEventListener('submit', popupEditor);
+popupEditbutton.addEventListener('click', openProfilePopup);
+popupEditClose.addEventListener('click', closeProfilePopup);
+popupProfileForm.addEventListener('submit', editNameAbout);
 
-popupAddButton.addEventListener('click', openAddCard);
-popupCloseButton.addEventListener('click', () => tooglePopup(popupAdd));
-fullscreenButtonClose.addEventListener('click', () => tooglePopup(popupFullscreen));
+popupAddButton.addEventListener('click', openpopupAdd);
+popupCloseButton.addEventListener('click', closepopupAdd);
+fullscreenButtonClose.addEventListener('click', closeFullscreen);
 formAdd.addEventListener('submit', editInfoTitleUrl);

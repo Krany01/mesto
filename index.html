@@ -28,23 +28,31 @@
         </section>
         <article class="popup popup_type_profile">
             <div class="popup__container">
-                <button class="popup__button popup__button_close" type="button"></button>
+                <button class="popup__button popup__button_close popup__button_close-edit" type="button"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <form class="popup__form" name="form-popup">
-                    <input class="popup__info popup__info_type_name" type="text" placeholder="Имя" name="name">
-                    <input class="popup__info popup__info_type_about-your-self" type="text" placeholder="О себе" name="about">
-                    <button class="popup__button popup__button_submit" type="submit" aria-label="Сохранить">Сохранить</button>
+                <form class="popup__form popup__profile-form" name="form-popup" novalidate>
+                    <fieldset class="popup__fieldset">
+                        <input class="popup__info popup__info_type_name" type="text" placeholder="Имя" name="info-name" id="profile-name" required minlength="2" maxlength="40">
+                        <span class="popup__info-error" id="profile-name-error"></span>
+                        <input class="popup__info popup__info_type_about-your-self" type="text" placeholder="О себе" id="profile-about" name="info-about" required minlength="2" maxlength="200">
+                        <span class="popup__info-error" id="profile-about-error"></span>
+                        <button class="popup__button popup__button_submit" type="submit" aria-label="Сохранить">Сохранить</button>
+                    </fieldset>
                 </form>
             </div>
         </article>
-        <article class="popup popup_type_profile popup-add">
+        <article class="popup popup-add">
             <div class="popup__container">
                 <button class="popup__button popup__button_close popup__button_close_add" type="button" aria-label="Закрыть"></button>
                 <h3 class="popup__title">Новое место</h3>
-                <form class="popup__form popup__form_type_add" name="photo">
-                    <input class="popup__info popup__info_type_title" type="text" placeholder="Название" name="name">
-                    <input class="popup__info popup__info_type_url" type="url" placeholder="Ссылка на картинку " name="url">
-                    <button class="popup__button popup__button_submit" type="submit">Создать</button>
+                <form class="popup__form popup__form_type_add" name="photo" novalidate>
+                    <fieldset class="popup__fieldset">
+                        <input class="popup__info popup__info_type_title" type="text" placeholder="Название" name="name" id="card-name" required minlength="2" maxlength="30">
+                        <span class="popup__info-error" id="card-name-error" role="status" aria-live="polite"></span>
+                        <input class="popup__info popup__info_type_url" type="url" placeholder="Ссылка на картинку" name="url" id="card-link" required>
+                        <span class="popup__info-error" id="card-link-error" role="status" aria-live="polite"></span>
+                        <button class="popup__button popup__button_submit" type="submit">Создать</button>
+                    </fieldset>
                 </form>
             </div>
         </article>
@@ -68,6 +76,8 @@
         </div>
     </template>
     <script src="./scripts/index.js "></script>
+    <script src="./scripts/validate.js "></script>
+
 </body>
 
 </html>
